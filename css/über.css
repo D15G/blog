@@ -1,0 +1,22 @@
+main {
+  background-color:white;
+  text-align: left;
+  margin-top: 1%;
+  margin-left: 14%;
+  padding-left: 2%;
+  padding-bottom: 60%;
+  padding-top: 0.5%;
+}
+
+main h4{
+  text-align: left;
+  color: black;
+  margin-top: -10px;
+  margin-bottom: -2px;
+}
+
+main #pics img {
+  float: right;
+  margin-right: 15%;
+  margin-top: 2%;
+}
