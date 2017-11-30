@@ -10,3 +10,63 @@ img {
   max-width: 350px;
   max-height: 300px;
 }
+
+.comment {
+  resize: none;
+  font-family: sans-serif;
+  height: 100px;
+  width: 20%;
+}
+
+#sachen {
+  margin-left: 3%;
+}
+
+button {
+  height: 30px;
+  width: 70px;
+  margin-left: 0.1%;
+}
+
+.btn-1 {
+  background-color: #ccdcff;
+}
+
+.btn-1:hover {
+  background-image: url("https://media.giphy.com/media/l1J9LFYy75mRXbvZ6/giphy.gif");
+}
+
+.btn-2 {
+  background-color: #ccdcff;
+
+}
+
+.btn-2:hover {
+  background-image: url("https://media.giphy.com/media/14v9Wlo49z46cg/giphy.gif");
+}
+
+.btn-3 {
+  background-color: #ccdcff;
+}
+
+.btn-3:hover {
+  background-image: url("https://media.giphy.com/media/Qh6aPCssL8J8I/giphy.gif");
+}
+
+.btn-4 {
+  background-color: #ccdcff;
+
+}
+
+.btn-4:hover {
+  background-image: url("https://media.giphy.com/media/tj5v01sQumzCg/giphy.gif");
+}
+
+.btn-5 {
+  background-color: #ccdcff;
+
+}
+
+.btn-5:hover {
+  background-image: url("https://media.giphy.com/media/l3fQ9icfExRfiePrq/giphy.gif");
+}

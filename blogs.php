@@ -1,6 +1,13 @@
 <?php
+
+  $vorname = "";
+  $nachname = "";
+  $kommentar = "";
+  $bewertung = "";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
+
   $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
   $stmt = $dbh->query('SELECT summe_bewertungen FROM blogs');
   $id = $_POST["id"] ?? '';
@@ -61,15 +68,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     <h2>Ein Blog der Ihr Leben verändert!</h2>
   </div>
 
+  <?php
+    $dbconnection = new PDO('mysql:host=10.20.16.102;dbname=ipadressen','DB_BLJ','BLJ12345l');
+    $stmt = $dbconnection->query("SELECT ip,home FROM t_ipadress order by id");
+    $ipArray = $stmt -> fetchAll();
+          ?>
+
   <div id="links">
   <h4>Andere Blogs</h4>
+
     <ul>
-      <li><a href="http://10.20.16.106/Blog/">Björn</a></li>
-      <li><a href="http://10.20.16.102/BlogSite/">Fynn</a></li>
-      <li><a href="http://10.20.16.105/david/">Carolina</a></li>
-      <li><a href="http://10.20.16.104/Blog/">Raffaele</a></li>
-      <li><a href="http://10.20.16.103/projektseite">Celine</a></li>
-      <li><a href="http://10.20.16.111/Blog01">Jennifer</a></li>
+      <li><a href="http://<?php echo $ipArray[6][0] ?><?php echo $ipArray[6][1] ?>">Björn</a></li>
+      <li><a href="http://<?php echo $ipArray[2][0] ?><?php echo $ipArray[2][1] ?>">Fynn</a></li>
+      <li><a href="http://<?php echo $ipArray[1][0]?><?php echo $ipArray[1][1] ?>">Carolina</a></li>
+      <li><a href="http://<?php echo $ipArray[7][0]?><?php echo $ipArray[7][1] ?>">Raffi</a></li>
+      <li><a href="http://<?php echo $ipArray[3][0]?><?php echo $ipArray[3][1] ?>">Céline</a></li>
+      <li><a href="http://<?php echo $ipArray[4][0]?><?php echo $ipArray[4][1] ?>">Jennifer</a></li>
+      <li><a href="http://<?php echo $ipArray[5][0]?><?php echo $ipArray[5][1] ?>">Timon</a></li>
     </ul>
   <h4>Navigation</h4>
     <ul>
@@ -85,27 +100,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
       foreach($stmt->fetchAll() as $x) {
 
-
+           echo '<div id="sachen">';
            echo 'Vorname: '. $x["vorname"] . '<br />';
            echo 'Nachname: '. $x["nachname"] . '<br />';
            echo 'Erstelldatum: '. $x["erstelldatum"] . '<br />';
            echo 'Erstellzeit: '. $x["erstellzeit"] . '<br />';
-           echo 'Blogeintrag: '. $x["blogeintrag"] . '<br />';
+           echo 'Blogeintrag: ' . '<br />' . $x["blogeintrag"] . '<br />' . '<br />';
            echo '<form action="blogs.php" method="post">';
-           echo '<button class="btn-primary" name="horrible" type="submit">Horrible</button> <button class="btn-primary" name="meh" type="submit">Meh</button> <button class="btn-primary" name="medium" type="submit">Medium</button> <button class="btn-primary" name="good" type="submit">Good</button> <button class="btn-primary" name="godlike" type="submit">Godlike</button>'. '<br />';
-           echo '<input name = "id" type="hidden" value="'. $x["id"] . '" />';
+           ?>
+           <p>
+             Kommentar abgeben:<br>
+             <p>
+              <label>Vorname:</label>
+                <input type="text" name="vorname" id="vorname" placeholder="Vorname..." value="<?php if(!isset($vorname)) { echo ''; } else { echo $vorname; } ?>"/>
+            </p>
+            <p>
+              <label>Nachname:</label>
+                <input type="text" name="nachname" id="nachname" placeholder="Nachname..." value="<?php if(!isset($nachname)) { echo ''; } else { echo $nachname; } ?>"/>
+            </p>
+              <textarea class="comment" name="kommentar" id="kommentar"></textarea>
+          </div>
+          <?php
+           echo '<br />' . '<button class="btn-1" name="horrible" type="submit">Horrible</button> <button class="btn-2" name="meh" type="submit">Meh</button> <button class="btn-3" name="medium" type="submit">Medium</button> <button class="btn-4" name="good" type="submit">Good</button> <button class="btn-5" name="godlike" type="submit">Godlike</button>'. '<br />';
+           echo '<input name = "id" type="hidden" value="'. $x["id"] . '" />' . '<br />';
            if($x["anzahl_bewertungen"] > 0) {
-             echo 'Durchschnittsbewertung: '. $x["summe_bewertungen"] / $x["anzahl_bewertungen"] . '<br />';
+             $bewertung = $x["summe_bewertungen"] / $x["anzahl_bewertungen"];
+             if($bewertung < 2)
+              echo 'Durchschnittsbewertung: Horrible';
+             if($bewertung >=2 && $bewertung < 3)
+              echo 'Durchschnittsbewertung: Meh';
+             if($bewertung >=3 && $bewertung < 4)
+              echo 'Durchschnittsbewertung: Medium';
+             if($bewertung >=4 && $bewertung < 4.8)
+              echo 'Durchschnittsbewertung: Good';
+             if($bewertung == 5 && $bewertung > 4.8)
+               echo 'Durchschnittsbewertung: Godlike';
            }
            else {
              echo 'Seien Sie der erste der bewertet! :C';
            }
            echo '</form>';
-            echo '<hr />';
-         }
-
-
-         ?>
+         echo '<hr />';
+      } ?>
   </main>
   <footer>
     <p id="footer1">Seite erstellt bei David Gataric<br>
