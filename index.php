@@ -35,15 +35,23 @@ $eintrag = trim($_POST["message"] ?? '');
       <h2>Ein Blog der Ihr Leben verändert!</h2>
     </div>
 
+    <?php
+      $dbconnection = new PDO('mysql:host=10.20.16.102;dbname=ipadressen','DB_BLJ','BLJ12345l');
+      $stmt = $dbconnection->query("SELECT ip,home FROM t_ipadress order by id");
+      $ipArray = $stmt -> fetchAll();
+            ?>
+
     <div id="links">
     <h4>Andere Blogs</h4>
+
       <ul>
-        <li><a href="http://10.20.16.106/Blog/">Björn</a></li>
-        <li><a href="http://10.20.16.102/BlogSite/">Fynn</a></li>
-        <li><a href="http://10.20.16.105/david/">Carolina</a></li>
-        <li><a href="http://10.20.16.104/Blog/">Raffaele</a></li>
-        <li><a href="http://10.20.16.103/projektseite">Celine</a></li>
-        <li><a href="http://10.20.16.111/Blog01">Jennifer</a></li>
+        <li><a href="http://<?php echo $ipArray[6][0] ?><?php echo $ipArray[6][1] ?>">Björn</a></li>
+        <li><a href="http://<?php echo $ipArray[2][0] ?><?php echo $ipArray[2][1] ?>">Fynn</a></li>
+        <li><a href="http://<?php echo $ipArray[1][0]?><?php echo $ipArray[1][1] ?>">Carolina</a></li>
+        <li><a href="http://<?php echo $ipArray[7][0]?><?php echo $ipArray[7][1] ?>">Raffi</a></li>
+        <li><a href="http://<?php echo $ipArray[3][0]?><?php echo $ipArray[3][1] ?>">Céline</a></li>
+        <li><a href="http://<?php echo $ipArray[4][0]?><?php echo $ipArray[4][1] ?>">Jennifer</a></li>
+        <li><a href="http://<?php echo $ipArray[5][0]?><?php echo $ipArray[5][1] ?>">Timon</a></li>
       </ul>
     <h4>Navigation</h4>
       <ul>
@@ -106,6 +114,9 @@ $eintrag = trim($_POST["message"] ?? '');
       <?php }
       if ( empty($errors)) {
         $eintrag = nl2br($eintrag);
+        $eintrag=strip_tags($eintrag, '<img><a><br>');
+        $vorname=htmlspecialchars($vorname);
+        $nachname=htmlspecialchars($nachname);
         $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
         $stmt = $dbh->query("INSERT INTO blogs  (vorname, nachname, erstelldatum, erstellzeit, blogeintrag)  VALUES ('$vorname', '$nachname', CURDATE(), CURTIME(), '$eintrag')"); ?>
         <ul class="errors2">
@@ -114,36 +125,12 @@ $eintrag = trim($_POST["message"] ?? '');
         </ul>
 
       <?php }
-
-      $allowed = [
-        '<br>',
-        '</br>',
-        '<br />',
-        '<a>',
-        '<img>',
-        '<br>'
-            ];
-
-      $vorname = htmlspecialchars($vorname);
-       foreach($allowed as $allow){
-       $vorname = str_replace(htmlspecialchars($allow), $allow, $vorname);
-       }
-       $nachname = htmlspecialchars($nachname);
-       foreach($allowed as $allow){
-       $nachname = str_replace(htmlspecialchars($allow), $allow, $nachname);
-       }
-       $eintrag = htmlspecialchars($eintrag);
-       foreach($allowed as $allow){
-       $eintrag = str_replace(htmlspecialchars($allow), $allow, $eintrag);
-       }
-        echo $eintrag;
       ?>
 </fieldset>
 <footer>
   <p id="footer1">Seite erstellt bei David Gataric<br>
     Gemacht mithilfe von Atom.
   </p>
-  <a href="https://atom.io/" target="_blank"><img class="bildfoot" src="images/atomlogo.png" alt="Atom Logo"></a>
   <p id="footer2">
     gataricdavid@hotmail.com<br>
     Bei Fragen Kontaktieren!
