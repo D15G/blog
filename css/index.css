@@ -31,6 +31,7 @@ fieldset {
 }
 
 #links {
+  border-radius: 30px;
   float: left;
   background-color:#99ccff;
   margin-top: 1.04%;
