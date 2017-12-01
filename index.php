@@ -1,28 +1,13 @@
-<?php $errors = [];
-
-$vorname = "";
-$nachname = "";
-$date = "";
-$eintrag = "";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-
-
-
-$vorname = $_POST["vorname"] ?? '';
-$nachname = $_POST["nachname"] ?? '';
-$date = $_POST["date"] ?? '';
-$eintrag = trim($_POST["message"] ?? '');
-
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/index.css">
-  <title>Startseite</title>
+  <link rel="stylesheet" href="css/blogs.css">
+  <link rel="stylesheet" href="css/über.css">
+  <title>BLOG</title>
 </head>
 <body>
 
@@ -56,77 +41,21 @@ $eintrag = trim($_POST["message"] ?? '');
     <h4>Navigation</h4>
       <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="über.php">Über mich</a></li>
-        <li><a href="blogs.php">Alle Blogs</a></li>
+        <li><a href="index.php?page=über">Über mich</a></li>
+        <li><a href="index.php?page=blogs">Alle Blogs</a></li>
       </ul>
     </div>
 
-
-    <div id="info">
-      <p>Dies ist der Blog von David Gataric. Sie werden hier verschiedene Einträge sehen.<br>
-        Seien Sie bitte freundlich zur Community und geniessen Sie Ihren Aufenthalt auf meinem Blog!
-      </p>
-    </div>
-  <fieldset>
-    <div id="blog">
-  		<h4>Schreiben Sie drauf los:</h4>
-      <div class="picture">
-        <img src="images/zitat.jpg" alt="Zitat">
-      </div>
-  		<p>
-        <label>Vorname:</label>
-  			<input class="name" type="text" name="vorname" id="vorname" placeholder="Vorname..." value="<?php if(!isset($vorname)) { echo ''; } else { echo $vorname; } ?>"/>
-  		</p>
-  		<p>
-        <label>Nachname:</label>
-  			<input class="name" type="text" name="nachname" id="nachname" placeholder="Nachname..." value="<?php if(!isset($nachname)) { echo ''; } else { echo $nachname; } ?>"/>
-  		</p>
-        <p>
-          Blogeintrag:<br>
-  			<textarea name="message" id="message"></textarea>
-  		</p>
-      <p><input class="btn-primary" type="submit" value="Submit"><br></p>
-    </div>
     <?php
+      $page = $_GET['page'] ?? 'home';
+      include 'views/' . $page . '.view.php';
 
-      if ($vorname == '') {
-        array_push($errors, "Geben Sie bitte einen Vornamen an!");
-      }
+    /*
+     include 'views/blogs.view.php'
+     include 'views/über.view.php'
+    */
 
-      if ($nachname == '') {
-        array_push($errors, "Geben Sie bitte einen Nachnamen an!");
-      }
-
-      if ($eintrag == '') {
-        array_push($errors, "Sie müssen einen Blog erfassen!");
-      }
-
-      if (strpos($eintrag, ' ') === false) {
-        array_push($errors, "Ihr Blog MUSS Leerzeichen enthalten!");
-      }
-
-      if ( ! empty($errors)) {?>
-        <ul class="errors">
-          <?php foreach ($errors as $err) { ?>
-            <li><?= $err ?></li>
-          <?php } ?>
-        </ul>
-      <?php }
-      if ( empty($errors)) {
-        $eintrag = nl2br($eintrag);
-        $eintrag=strip_tags($eintrag, '<img><a><br>');
-        $vorname=htmlspecialchars($vorname);
-        $nachname=htmlspecialchars($nachname);
-        $dbh = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
-        $stmt = $dbh->query("INSERT INTO blogs  (vorname, nachname, erstelldatum, erstellzeit, blogeintrag)  VALUES ('$vorname', '$nachname', CURDATE(), CURTIME(), '$eintrag')"); ?>
-        <ul class="errors2">
-            <li><?= 'Ihr Blog wurde erfolgreich gepostet!' ?></li>
-          <?php  ?>
-        </ul>
-
-      <?php }
       ?>
-</fieldset>
 <footer>
   <p id="footer1">
     Seite erstellt bei David Gataric<br>
