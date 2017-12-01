@@ -2,10 +2,17 @@
 
 <div id="info">
   <p>Dies ist der Blog von David Gataric. Sie werden hier verschiedene Einträge sehen.<br>
-    Seien Sie bitte freundlich zur Community und geniessen Sie Ihren Aufenthalt auf meinem Blog!
+    Seien Sie bitte freundlich zur Community und geniessen Sie Ihren Aufenthalt<br> auf meinem Blog!
+    Falls Sie Fragen zu meinem Blog hätten, dann<br> stellen Sie mir privat die Frage.<br>
+    Erreichen können Sie mich unter: gataricdavid@hotmail.com.
+  </p>
+</div>
+<div id="info1">
+  <p>
   </p>
 </div>
 <fieldset>
+<form action="index.php" method="post">
 <div id="blog">
   <h4>Schreiben Sie drauf los:</h4>
   <div class="picture">
@@ -25,6 +32,7 @@
   </p>
   <p><input class="btn-primary" type="submit" value="Submit"><br></p>
 </div>
+</form>
   <?php
     if ($vorname == '') {
       array_push($errors, "Geben Sie bitte einen Vornamen an!");

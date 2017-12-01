@@ -11,7 +11,6 @@
 </head>
 <body>
 
-  <form action="index.php" method="post">
 
     <div class="logo">
       <img src="images/Logos-Blog2.png" alt="Bloglogo">
@@ -64,6 +63,5 @@
     Bei Fragen Kontaktieren!
   </p>
 </footer>
-</form>
 </body>
 </html>

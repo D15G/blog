@@ -13,7 +13,7 @@
          echo 'Erstelldatum: '. $x["erstelldatum"] . '<br />';
          echo 'Erstellzeit: '. $x["erstellzeit"] . '<br />';
          echo 'Blogeintrag: ' . '<br />' . $x["blogeintrag"] . '<br />' . '<br />';
-         echo '<form action="blogs.php" method="post">';
+         echo '<form action="index.php?page=blogs" method="post">';
          echo '<br />' . '<button class="btn-1" name="horrible" type="submit">Horrible</button> <button class="btn-2" name="meh" type="submit">Meh</button> <button class="btn-3" name="medium" type="submit">Medium</button> <button class="btn-4" name="good" type="submit">Good</button> <button class="btn-5" name="godlike" type="submit">Godlike</button>'. '<br />';
          echo '<input name = "id" type="hidden" value="'. $x["id"] . '" />' . '<br />';
          if($x["anzahl_bewertungen"] > 0) {

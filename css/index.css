@@ -16,12 +16,25 @@ body {
 }
 
 #info {
+  margin-bottom: 0.5%;
   border-color: white;
   background-color:white;
-  text-align: center;
   margin-left: 14%;
+  padding-left: 2%;
+  margin-top:0px;
 }
 
+#info1 {
+  margin-bottom: 0.5%;
+  background-image: url("../images/giphy.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color:white;
+  margin-left: 14%;0
+  padding-bottom: 30%;
+  padding-left: 2%;
+  margin-top:0px;
+}
 
 fieldset {
   background-color: white;
@@ -83,6 +96,8 @@ textarea {
 
 textarea:focus {
   outline:none;
+  border-width: medium;
+  border-style:solid;
   border-color: lightgreen;
 }
 
@@ -177,6 +192,10 @@ footer #footer1 {
   background-image: url("../images/button.gif");
 }
 
-.name:hover {
+.name:focus {
+  outline:none;
+  border-width: medium;
+  border-style:solid;
   border-color: lightgreen;
+  background-color: #99ccff;
 }
