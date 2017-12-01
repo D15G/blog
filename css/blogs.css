@@ -1,6 +1,6 @@
 main {
   background-color: white;
-  margin-left: 13%;
+  margin-left: 14%;
   margin-top: 1%;
   opacity: 0.9;
   overflow: hidden;
@@ -11,15 +11,9 @@ img {
   max-height: 300px;
 }
 
-.comment {
-  resize: none;
-  font-family: sans-serif;
-  height: 100px;
-  width: 20%;
-}
-
 #sachen {
-  margin-left: 3%;
+  padding-top: 0.5%;
+  padding-left: 3%;
 }
 
 button {

@@ -36,7 +36,7 @@ $eintrag = trim($_POST["message"] ?? '');
     </div>
 
     <?php
-      $dbconnection = new PDO('mysql:host=10.20.16.102;dbname=ipadressen','DB_BLJ','BLJ12345l');
+      $dbconnection = new PDO('mysql:host=10.20.16.107;dbname=ipadressen','DB_BLJ','BLJ12345l');
       $stmt = $dbconnection->query("SELECT ip,home FROM t_ipadress order by id");
       $ipArray = $stmt -> fetchAll();
             ?>
@@ -75,11 +75,11 @@ $eintrag = trim($_POST["message"] ?? '');
       </div>
   		<p>
         <label>Vorname:</label>
-  			<input type="text" name="vorname" id="vorname" placeholder="Vorname..." value="<?php if(!isset($vorname)) { echo ''; } else { echo $vorname; } ?>"/>
+  			<input class="name" type="text" name="vorname" id="vorname" placeholder="Vorname..." value="<?php if(!isset($vorname)) { echo ''; } else { echo $vorname; } ?>"/>
   		</p>
   		<p>
         <label>Nachname:</label>
-  			<input type="text" name="nachname" id="nachname" placeholder="Nachname..." value="<?php if(!isset($nachname)) { echo ''; } else { echo $nachname; } ?>"/>
+  			<input class="name" type="text" name="nachname" id="nachname" placeholder="Nachname..." value="<?php if(!isset($nachname)) { echo ''; } else { echo $nachname; } ?>"/>
   		</p>
         <p>
           Blogeintrag:<br>
@@ -128,10 +128,9 @@ $eintrag = trim($_POST["message"] ?? '');
       ?>
 </fieldset>
 <footer>
-  <p id="footer1">Seite erstellt bei David Gataric<br>
-    Gemacht mithilfe von Atom.
-  </p>
-  <p id="footer2">
+  <p id="footer1">
+    Seite erstellt bei David Gataric<br>
+    Gemacht mithilfe von <a href="https://atom.io/">Atom</a><br>
     gataricdavid@hotmail.com<br>
     Bei Fragen Kontaktieren!
   </p>

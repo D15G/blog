@@ -69,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
   </div>
 
   <?php
-    $dbconnection = new PDO('mysql:host=10.20.16.102;dbname=ipadressen','DB_BLJ','BLJ12345l');
+
+    $dbconnection = new PDO('mysql:host=10.20.16.107;dbname=ipadressen','DB_BLJ','BLJ12345l');
     $stmt = $dbconnection->query("SELECT ip,home FROM t_ipadress order by id");
     $ipArray = $stmt -> fetchAll();
           ?>
@@ -86,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
       <li><a href="http://<?php echo $ipArray[4][0]?><?php echo $ipArray[4][1] ?>">Jennifer</a></li>
       <li><a href="http://<?php echo $ipArray[5][0]?><?php echo $ipArray[5][1] ?>">Timon</a></li>
     </ul>
+
   <h4>Navigation</h4>
     <ul>
       <li><a href="index.php">Home</a></li>
@@ -132,10 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
   </main>
   <footer>
     <p id="footer1">Seite erstellt bei David Gataric<br>
-      Gemacht mithilfe von Atom.
-    </p>
-    <a href="https://atom.io/" target="_blank"><img src="images/atomlogo.png" alt="Atom Logo"></a>
-    <p id="footer2">
+      Gemacht mithilfe von <a href="https://atom.io/">Atom</a><br>
       gataricdavid@hotmail.com<br>
       Bei Fragen Kontaktieren!
     </p>

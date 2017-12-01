@@ -12,13 +12,14 @@ body {
   border-style: solid;
   border-width: 0.5px;
   background-color:#ccdcff;
-  margin-left: 13%;
+  margin-left: 14%;
 }
 
 #info {
+  border-color: white;
   background-color:white;
   text-align: center;
-  margin-left: 13%;
+  margin-left: 14%;
 }
 
 
@@ -26,7 +27,7 @@ fieldset {
   background-color: white;
   opacity: 1;
   padding-bottom: 4.2%;
-  margin-left: 13%;
+  margin-left: 14%;
 }
 
 #links {
@@ -40,7 +41,6 @@ fieldset {
 
 #links li {
   list-style-type: none;
-
 }
 
 
@@ -48,14 +48,16 @@ a{
     text-decoration: none;
   }
   a:hover {
-    color: white;
+    color: blue;
+    background-color: white;
     text-decoration: none;
   }
   a:active {
     color: green;
+    background-color: lightgreen;
   }
   a:visited {
-    color:#e6005c;
+    color:green;
   }
 
 h4 {
@@ -71,9 +73,16 @@ h4 {
 
 textarea {
   resize: none;
+  background-image: url("../images/529947911.jpg");
   font-family: sans-serif;
+  font-weight: bold;
   height: 200px;
   width: 40%;
+}
+
+textarea:focus {
+  outline:none;
+  border-color: lightgreen;
 }
 
 label {
@@ -84,11 +93,8 @@ label {
 .logo img {
   display: inline-block;
   float:left;
-  height: 69px;
   max-height: 75px;
-  width:12.1%;
   max-width: 14%;
-  margin-right: 20%;
   margin-top: 0.03%;
   opacity: 0.9;
 }
@@ -144,12 +150,12 @@ fieldset .picture {
 
 footer {
   margin-top: 0.5%;
-  margin-left: 13%;
-  border-color: white;
+  margin-left: 14%;
+  border-color: grey;
   color: black;
   border-style: solid;
   border-width: 0.5px;
-  background-color:white;
+  background-color:lightgrey;
 }
 
 footer #footer1 {
@@ -157,12 +163,6 @@ footer #footer1 {
   margin-left: 0.4%;
   display: inline-block;
   margin-top: auto;
-}
-
-footer #footer2 {
-  text-align: right;
-  margin-left: 82%;
-  display: inline-block;
   margin-bottom: auto;
 }
 
@@ -174,4 +174,8 @@ footer #footer2 {
 
 .btn-primary:hover {
   background-image: url("../images/button.gif");
+}
+
+.name:hover {
+  border-color: lightgreen;
 }
