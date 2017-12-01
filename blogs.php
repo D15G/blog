@@ -107,20 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
            echo 'Erstellzeit: '. $x["erstellzeit"] . '<br />';
            echo 'Blogeintrag: ' . '<br />' . $x["blogeintrag"] . '<br />' . '<br />';
            echo '<form action="blogs.php" method="post">';
-           ?>
-           <p>
-             Kommentar abgeben:<br>
-             <p>
-              <label>Vorname:</label>
-                <input type="text" name="vorname" id="vorname" placeholder="Vorname..." value="<?php if(!isset($vorname)) { echo ''; } else { echo $vorname; } ?>"/>
-            </p>
-            <p>
-              <label>Nachname:</label>
-                <input type="text" name="nachname" id="nachname" placeholder="Nachname..." value="<?php if(!isset($nachname)) { echo ''; } else { echo $nachname; } ?>"/>
-            </p>
-              <textarea class="comment" name="kommentar" id="kommentar"></textarea>
-          </div>
-          <?php
            echo '<br />' . '<button class="btn-1" name="horrible" type="submit">Horrible</button> <button class="btn-2" name="meh" type="submit">Meh</button> <button class="btn-3" name="medium" type="submit">Medium</button> <button class="btn-4" name="good" type="submit">Good</button> <button class="btn-5" name="godlike" type="submit">Godlike</button>'. '<br />';
            echo '<input name = "id" type="hidden" value="'. $x["id"] . '" />' . '<br />';
            if($x["anzahl_bewertungen"] > 0) {
@@ -141,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
            }
            echo '</form>';
          echo '<hr />';
+         echo '</div>';
       } ?>
   </main>
   <footer>
